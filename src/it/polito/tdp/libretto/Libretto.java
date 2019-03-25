@@ -35,11 +35,12 @@ public class Libretto {
 	 * @return il voto se disponibile
 	 */
 	public Voto cercaEsame(String nomeEsame) {
-		for(Voto v : this.voti) {
-			if(v.getCorso().equals(nomeEsame))
-				return v;
-		} 
+		Voto voto = new Voto(0, nomeEsame, null);
+		int pos = this.voti.indexOf(voto); //indexOf chiama equals 
+		if(pos==-1)
 		return null;
+		else 
+			return this.voti.get(pos);
 	}
 	
 	/**
@@ -49,13 +50,11 @@ public class Libretto {
 	 * @return vero se voto e esame uguali, altrimenti falso
 	 */
 	public boolean esisteGiaVoto(Voto v) {
-		Voto trovato = this.cercaEsame(v.getCorso());
-		if(trovato==null)
+		int pos = this.voti.indexOf(v);
+		if(pos==-1)
 			return false;
-		if(trovato.getPunti()==v.getPunti())
-			return true;
-		else
-			return false;
+		else 
+			return (this.voti.get(pos).getPunti()==v.getPunti());
 	}
 
 }
