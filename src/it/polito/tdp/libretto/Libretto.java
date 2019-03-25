@@ -19,5 +19,14 @@ public class Libretto {
 	public void add(Voto v) {
 		this.voti.add(v);
 	}
+	
+	public List<Voto> cercaVoti(int voto) {
+		List<Voto> result = new ArrayList<>();
+		for(Voto v : this.voti) {
+			if(v.getPunti()==voto)
+				result.add(v);
+		}
+		return result;
+	}
 
 }
